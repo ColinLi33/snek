@@ -1,0 +1,14 @@
+{
+  "name": "connect4",
+  "version": "1.0.0",
+  "description": "Connect 4 made by Colin Li using p5!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Colin Li",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
