@@ -27,9 +27,8 @@ class Snake {
     if(this.x <= 0 - this.size)
       this.x = 760 - this.size;
 
-    if(this.y <= 0)
+    if(this.y <= 0 - this.size)
       this.y = 760 - this.size;
-
 
     if(this.x >= 760)
       this.x = 0;
