@@ -1,5 +1,5 @@
-canvasWidth = 760;
-canvasHeight = 760;
+canvasWidth = 460;
+canvasHeight = 460;
 //You got this!
 function setup(){
   frameRate(20);
@@ -20,9 +20,10 @@ function draw(){
   apple.show();
   snake.move();
   snake.wall();
+  snake.collision();
   snake.trail();
   snake.eat(apple);
-  snake.collision();
+
   snake.show();
 
 

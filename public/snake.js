@@ -20,6 +20,11 @@ class Snake {
 		}
 	}
 
+	reset(){
+		this.tail = [];
+		this.score = 1;
+	}
+
 	trail() {
 		for(let i = this.score; i > 0; i--){
 			this.tail[i] = this.tail[i-1];
@@ -38,7 +43,7 @@ class Snake {
 	collision(){
 		for(let i = 1; i < this.score; i++){
 			if(this.x + this.size > this.tail[i].x && this.x < this.tail[i].x + this.size && this.y < this.tail[i].y + this.size && this.y + this.size > this.tail[i].y){
-				alert('YOU DIED');
+				this.reset();
 		}
 	}
 }
@@ -56,15 +61,15 @@ class Snake {
 
   wall(){
     if(this.x <= 0 - this.size)
-      this.x = 760 - this.size;
+      this.x = 460 - this.size;
 
     if(this.y <= 0 - this.size)
-      this.y = 760 - this.size;
+      this.y = 460 - this.size;
 
-    if(this.x >= 760)
+    if(this.x >= 460)
       this.x = 0;
 
-    if(this.y >= 760)
+    if(this.y >= 460)
       this.y = 0;
     }
 }

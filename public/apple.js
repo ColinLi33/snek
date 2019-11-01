@@ -17,7 +17,7 @@ class Apple{
   }
 
   randomizer(){
-      let randomNumber = Math.random()*760;
+      let randomNumber = Math.random()*460;
       return randomNumber - (randomNumber % 20);
   }
 }
