@@ -28,10 +28,20 @@ class Snake {
 		this.tail[0] = moveVec;
 	}
 
-	eat(){
-		this.score ++;
-		console.log(this.score);
+	eat(apple){
+		if(this.x + this.size > apple.x && this.x < apple.x + apple.size && this.y < apple.y + this.size && this.y + this.size > apple.y){
+			this.score++;
+			apple.move();
+		}
 	}
+
+	collision(){
+		for(let i = 1; i < this.score; i++){
+			if(this.x + this.size > this.tail[i].x && this.x < this.tail[i].x + this.size && this.y < this.tail[i].y + this.size && this.y + this.size > this.tail[i].y){
+				alert('YOU DIED');
+		}
+	}
+}
 
 	move() {
 		if(this.dir == 'RIGHT')

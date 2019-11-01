@@ -4,25 +4,25 @@ canvasHeight = 760;
 function setup(){
   frameRate(20);
   createCanvas(canvasWidth,canvasHeight);
-  snake = new Snake(300, 300, 20);
-  apple1 = new Apple(randomizer(canvasWidth), randomizer(canvasHeight), 20);
+  snake = new Snake(randomizer(canvasWidth), randomizer(canvasHeight), 20);
+  apple = new Apple(randomizer(canvasWidth), randomizer(canvasHeight), 20);
 }
 
 function randomizer(thing){
     let randomNumber = Math.random()*thing;
     return randomNumber - (randomNumber % 20);
-
-
 }
 
 function draw(){
   fill(120);
   rect(0, 0, canvasWidth, canvasHeight);
 
-  apple1.show();
+  apple.show();
   snake.move();
   snake.wall();
   snake.trail();
+  snake.eat(apple);
+  snake.collision();
   snake.show();
 
 

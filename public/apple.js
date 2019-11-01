@@ -10,4 +10,14 @@ class Apple{
     fill('#ff0000')
     rect(this.x, this.y, this.size, this.size);
   }
+
+  move(){
+    this.x = this.randomizer();
+    this.y = this.randomizer();
+  }
+
+  randomizer(){
+      let randomNumber = Math.random()*760;
+      return randomNumber - (randomNumber % 20);
+  }
 }
