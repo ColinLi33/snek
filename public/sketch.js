@@ -4,19 +4,27 @@ canvasHeight = 760;
 function setup(){
   frameRate(20);
   createCanvas(canvasWidth,canvasHeight);
-  snake = new Snake(300, 300, 20, 0);
-  apple1 = new Apple(200, 200, 20);
+  snake = new Snake(300, 300, 20);
+  apple1 = new Apple(randomizer(canvasWidth), randomizer(canvasHeight), 20);
+}
+
+function randomizer(thing){
+    let randomNumber = Math.random()*thing;
+    return randomNumber - (randomNumber % 20);
+
+
 }
 
 function draw(){
   fill(120);
   rect(0, 0, canvasWidth, canvasHeight);
 
-
   apple1.show();
-  snake.show();
   snake.move();
   snake.wall();
+  snake.trail();
+  snake.show();
+
 
 }
 
@@ -31,5 +39,4 @@ function keyPressed() {
   } else if (keyCode === RIGHT_ARROW && snake.dir != 'LEFT') {
     snake.dir = 'RIGHT';
   }
-
 }

@@ -1,15 +1,36 @@
 class Snake {
-	dir = 'RIGHT';
-	constructor(x, y, size, boxValue) {
+	score = 1;
+	tail = [];
+	xVel = 0;
+	yVel = 0;
+	constructor(x, y, size) {
 		this.x = x;
 		this.y = y;
 		this.size = size;
-		this.boxValue = boxValue;
 	}
 
 	show() {
 		fill('#00ff00');
 		rect(this.x, this.y, this.size, this.size);
+	//console.log(this.tail[0]);
+		for(let i = 0; i < this.score; i++){
+			//console.log(this.tail[i].x);
+			//console.log(this.tail[i].y);
+			rect(this.tail[i].x, this.tail[i].y, this.size, this.size);
+		}
+	}
+
+	trail() {
+		for(let i = this.score; i > 0; i--){
+			this.tail[i] = this.tail[i-1];
+		}
+		let moveVec = createVector(this.x, this.y);
+		this.tail[0] = moveVec;
+	}
+
+	eat(){
+		this.score ++;
+		console.log(this.score);
 	}
 
 	move() {
@@ -36,6 +57,4 @@ class Snake {
     if(this.y >= 760)
       this.y = 0;
     }
-
-
 }
