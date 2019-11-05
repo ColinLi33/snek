@@ -1,8 +1,17 @@
 canvasWidth = 460;
 canvasHeight = 460;
+let snake;
+let snake2;
+let apple;
+var socket = io.connect("localhost:3333");
+
+socket.on('player', function(data){
+  data = snake;
+
+});
 //You got this!
 function setup(){
-  frameRate(20);
+  frameRate(60);
   createCanvas(canvasWidth,canvasHeight);
   snake = new Snake(randomizer(canvasWidth), randomizer(canvasHeight), 20);
   apple = new Apple(randomizer(canvasWidth), randomizer(canvasHeight), 20);
@@ -23,10 +32,11 @@ function draw(){
   snake.collision();
   snake.trail();
   snake.eat(apple);
-
   snake.show();
 
-
+  socket.emit('snake1', snake);
+  socket.emit('snake2', snake1);
+  socket.emit('apple', apple);
 }
 
 function keyPressed() {
