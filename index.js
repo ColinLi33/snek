@@ -4,7 +4,7 @@ var socket = require('socket.io');
 var players = [];
 
 app.use(express.static('public'))
-
+/*
 io.on('connection', function(socket){
     console.log(`Made socket connection with ${socket.id}`);
     if(players.length < 2){
@@ -38,7 +38,7 @@ io.on('connection', function(socket){
 		socket.broadcast.emit("rmvDot", data);
 	});
 */
-});
+//});
 
 
 app.get('/', (req, res) => res.render('index.html'))
