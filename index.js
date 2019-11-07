@@ -41,6 +41,6 @@ io.on('connection', function(socket){
 //});
 
 
-app.get('/', (req, res) => res.render('index.html'))
+//app.get('/', (req, res) => res.render('index.html'))
 
 app.listen(process.env.PORT || 3333, () => console.log('Example app listening'))
