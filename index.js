@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-var socket = require('socket.io');
-var players = [];
+//var socket = require('socket.io');
+//var players = [];
 
 app.use(express.static('public'))
 /*
