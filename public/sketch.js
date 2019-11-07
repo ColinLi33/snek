@@ -3,12 +3,12 @@ canvasHeight = 460;
 let snake;
 let snake2;
 let apple;
-var socket = io.connect("localhost:3333");
+/*var socket = io.connect("localhost:3333");
 
 socket.on('player', function(data){
   data = snake;
 
-});
+});*/
 //You got this!
 function setup(){
   frameRate(60);
