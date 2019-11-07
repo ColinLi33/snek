@@ -10,15 +10,23 @@ socket.on('player', function(data){
 
 });*/
 //You got this!
-function setup(){
+function setup() {
   frameRate(20);
-  createCanvas(canvasWidth,canvasHeight);
+  createCanvas(canvasWidth * 2, canvasHeight * 2);
   snake = new Snake(randomizer(canvasWidth), randomizer(canvasHeight), 20);
   apple = new Apple(randomizer(canvasWidth), randomizer(canvasHeight), 20);
 }
 
-function randomizer(thing){
-    let randomNumber = Math.random()*thing;
+function displayScore() {
+  let s = "Score: " + snake.getScore();
+  fill(50);
+  textSize(20);
+  noStroke();
+  text(s, canvasWidth - 260, canvasHeight + 20);
+}
+
+function randomizer(thing) {
+    let randomNumber = Math.random() * thing;
     return randomNumber - (randomNumber % 20);
 }
 
@@ -33,6 +41,8 @@ function draw(){
   snake.trail();
   snake.eat(apple);
   snake.show();
+  displayScore();
+
 /*
   socket.emit('snake1', snake);
   socket.emit('snake2', snake1);

@@ -9,6 +9,10 @@ class Snake {
 		this.size = size;
 	}
 
+	getScore() {
+		return this.score;
+	}
+
 	show() {
 		fill('#00ff00');
 		rect(this.x, this.y, this.size, this.size);
@@ -72,4 +76,8 @@ class Snake {
     if(this.y >= 460)
       this.y = 0;
     }
+
+		updateScore() {
+
+		}
 }
