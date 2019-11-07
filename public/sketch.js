@@ -11,7 +11,7 @@ socket.on('player', function(data){
 });*/
 //You got this!
 function setup(){
-  frameRate(60);
+  frameRate(20);
   createCanvas(canvasWidth,canvasHeight);
   snake = new Snake(randomizer(canvasWidth), randomizer(canvasHeight), 20);
   apple = new Apple(randomizer(canvasWidth), randomizer(canvasHeight), 20);
