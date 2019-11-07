@@ -4,12 +4,14 @@
   "description": "Connect 4 made by Colin Li using p5!",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Colin Li + Matthew Tzeng",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "heroku": "^7.33.3"
+    "heroku": "^7.33.3",
+    "socket.io": "^2.3.0"
   }
 }

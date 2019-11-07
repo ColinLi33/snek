@@ -1,53 +1,43 @@
-canvasWidth = 460;
-canvasHeight = 460;
-let snake;
-let snake2;
-let apple;
-var socket = io.connect("localhost:3333");
+//const socket = io.connect('http://localhost:3333');
+const socket = io.connect('snekky.herokuapp.com');
 
-socket.on('player', function(data){
-  data = snake;
+let players = [];
 
-});
-//You got this!
-function setup(){
-  frameRate(60);
-  createCanvas(canvasWidth,canvasHeight);
-  snake = new Snake(randomizer(canvasWidth), randomizer(canvasHeight), 20);
-  apple = new Apple(randomizer(canvasWidth), randomizer(canvasHeight), 20);
+socket.on("update", players => updatePlayers(players));
+socket.on("disconnect", playerId => removePlayer(playerId));
+
+
+function setup() {
+  frameRate(20);
+  createCanvas(460, 460);
 }
 
-function randomizer(thing){
-    let randomNumber = Math.random()*thing;
-    return randomNumber - (randomNumber % 20);
+function draw() {
+  background(0);
+  players.forEach(player => player.makeSnake());
+  players.forEach(player => player.keyPressed());
+  players.forEach(player => player.move());
+
 }
 
-function draw(){
-  fill(120);
-  rect(0, 0, canvasWidth, canvasHeight);
-
-  apple.show();
-  snake.move();
-  snake.wall();
-  snake.collision();
-  snake.trail();
-  snake.eat(apple);
-  snake.show();
-
-  socket.emit('snake1', snake);
-  socket.emit('snake2', snake1);
-  socket.emit('apple', apple);
-}
-
-function keyPressed() {
-  if (keyCode === UP_ARROW && snake.dir != 'DOWN') {
-    snake.dir = 'UP'
-  } else if (keyCode === DOWN_ARROW && snake.dir != 'UP') {
-    snake.dir = 'DOWN';
+function updatePlayers(serverPlayers) {
+  for (let i = 0; i < serverPlayers.length; i++) {
+    let playerFromServer = serverPlayers[i];
+    if (!playerExists(playerFromServer)) {
+      players.push(new Player(playerFromServer));
+    }
   }
-  if (keyCode === LEFT_ARROW && snake.dir != 'RIGHT') {
-    snake.dir = 'LEFT';
-  } else if (keyCode === RIGHT_ARROW && snake.dir != 'LEFT') {
-    snake.dir = 'RIGHT';
+}
+
+function playerExists(playerFromServer) {
+  for (let i = 0; i < players.length; i++) {
+    if (players[i].id === playerFromServer.id) {
+      return true;
+    }
   }
+  return false;
+}
+
+function removePlayer(playerId) {
+  players = players.filter(player => player.id !== playerId);
 }

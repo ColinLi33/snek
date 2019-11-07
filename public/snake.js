@@ -47,7 +47,7 @@ class Snake {
 		}
 	}
 }
-
+/*
 	move() {
 		if(this.dir == 'RIGHT')
 			this.x += this.size;
@@ -57,7 +57,7 @@ class Snake {
 			this.y -= this.size;
 		 if(this.dir == 'DOWN')
 			this.y += this.size;
-	}
+	} */
 
   wall(){
     if(this.x <= 0 - this.size)
