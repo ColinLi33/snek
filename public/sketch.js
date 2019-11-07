@@ -33,10 +33,10 @@ function draw(){
   snake.trail();
   snake.eat(apple);
   snake.show();
-
+/*
   socket.emit('snake1', snake);
   socket.emit('snake2', snake1);
-  socket.emit('apple', apple);
+  socket.emit('apple', apple);*/
 }
 
 function keyPressed() {
