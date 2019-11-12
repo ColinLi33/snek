@@ -2,8 +2,12 @@ const express = require("express");
 const socket = require('socket.io');
 const app = express();
 let Player = require("./Player");
+const PORT = process.env.PORT || 3333;
 
-let server = app.listen(process.env.PORT || 3333);
+let server = app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
+
 app.use(express.static("public"));
 
 
