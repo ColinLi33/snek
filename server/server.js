@@ -5,7 +5,7 @@ let Player = require("./Player");
 const PORT = process.env.PORT || 3333;
 
 let server = app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
+    console.log(`app is running on port ${ PORT }`);
 });
 
 app.use(express.static("public"));
@@ -15,7 +15,7 @@ let io = socket(server);
 
 let players = [];
 
-setInterval(updateGame, 16);
+setInterval(updateGame, 60);
 
 io.sockets.on("connection", socket => {
   console.log(`New connection ${socket.id}`);

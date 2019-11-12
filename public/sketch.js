@@ -1,10 +1,14 @@
-//const socket = io.connect('http://localhost:3333');
-const socket = io.connect('snekky.herokuapp.com');
+const socket = io.connect('http://localhost:3333');
+//const socket = io.connect('snekky.herokuapp.com');
 
 let players = [];
 
-socket.on("update", players => updatePlayers(players));
-socket.on("disconnect", playerId => removePlayer(playerId));
+socket.on("update", function(players){
+  updatePlayers(players);
+});
+socket.on("disconnect", function(playerId){
+  removePlayer(playerId);
+});
 
 
 function setup() {
@@ -14,14 +18,13 @@ function setup() {
 
 function draw() {
   background(0);
-
-  players.forEach(player => player.keyPressed());
-  players.forEach(player => player.move());
-  players.forEach(player => player.collision());
-  players.forEach(player => player.wall());
-  players.forEach(player => player.makeSnake());
-
-
+  for(let i = 0; i < players.length; i++){
+    players[i].keyPressed();
+    players[i].move();
+    players[i].collision();
+    players[i].wall();
+    players[i].makeSnake();
+  }
 }
 
 function updatePlayers(serverPlayers) {
