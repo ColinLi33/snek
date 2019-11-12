@@ -1,21 +1,20 @@
+//let updateScore = false;
+
 class Snake {
 	score = 1;
 	tail = [];
 	xVel = 0;
 	yVel = 0;
+
 	constructor(x, y, size) {
 		this.x = x;
 		this.y = y;
 		this.size = size;
 	}
 
-	getScore() {
-		return this.score;
-	}
-
 	show() {
 		fill('#00ff00');
-		rect(this.x, this.y, this.size, this.size);
+		rect(this.x, this.y,this.size, this.size);
 	//console.log(this.tail[0]);
 		for(let i = 0; i < this.score; i++){
 			//console.log(this.tail[i].x);
@@ -76,8 +75,4 @@ class Snake {
     if(this.y >= 460)
       this.y = 0;
     }
-
-		updateScore() {
-
-		}
 }

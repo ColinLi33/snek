@@ -23,6 +23,7 @@ function displayScore() {
   textSize(20);
   noStroke();
   text(s, canvasWidth - 260, canvasHeight + 20);
+  clear
 }
 
 function randomizer(thing) {
@@ -31,7 +32,7 @@ function randomizer(thing) {
 }
 
 function draw(){
-  fill(120);
+  background(255);
   rect(0, 0, canvasWidth, canvasHeight);
 
   apple.show();
@@ -41,7 +42,10 @@ function draw(){
   snake.trail();
   snake.eat(apple);
   snake.show();
-  displayScore();
+  textAlign(CENTER, CENTER);
+  fill(75);
+  textSize(20);
+  text("Score: " + snake.score, canvasWidth - 260, canvasHeight + 20);
 
 /*
   socket.emit('snake1', snake);
