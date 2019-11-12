@@ -1,5 +1,5 @@
-//const socket = io.connect('http://localhost:3333');
-const socket = io.connect('snekky.herokuapp.com');
+const socket = io.connect('http://localhost:3333');
+//const socket = io.connect('snekky.herokuapp.com');
 
 let players = [];
 
@@ -14,9 +14,13 @@ function setup() {
 
 function draw() {
   background(0);
-  players.forEach(player => player.makeSnake());
+
   players.forEach(player => player.keyPressed());
   players.forEach(player => player.move());
+  players.forEach(player => player.collision());
+  players.forEach(player => player.wall());
+  players.forEach(player => player.makeSnake());
+
 
 }
 
