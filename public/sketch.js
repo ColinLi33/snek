@@ -1,5 +1,5 @@
-const socket = io.connect('http://localhost:3333');
-//const socket = io.connect('snekky.herokuapp.com');
+//const socket = io.connect('http://localhost:3333');
+const socket = io.connect('snekky.herokuapp.com');
 
 let players = [];
 
