@@ -5,34 +5,38 @@ let Player = require("./Player");
 const PORT = process.env.PORT || 3333;
 
 let server = app.listen(PORT, () => {
-    console.log(`app is running on port ${ PORT }`);
+    console.log(`Snekky is running on port ${ PORT }`);
 });
 
 app.use(express.static("public"));
 
-
-let io = socket(server);
-
 let players = [];
 
-setInterval(updateGame, 60);
+//setInterval(updateGame, 16);
 
-io.sockets.on("connection", socket => {
+
+let io = socket(server);
+io.on("connection", socket => {
   console.log(`New connection ${socket.id}`);
   players.push(new Player(socket.id));
 
-  socket.on("disconnect", () => {
+  socket.on("disconnect", function(){
     io.sockets.emit("disconnect", socket.id);
     players = players.filter(player => player.id !== socket.id);
+  });
+
+  socket.on('requestUpdate', function(){
+    io.sockets.emit("update", players);
+  });
+
+  socket.on("updatePlayers", function(updatePlayers){
+    io.sockets.emit('update', updatePlayers);
   });
 });
 
 
-io.sockets.on("disconnect", socket => {
-  io.sockets.emit("disconnect", socket.id);
 
-  players = players.filter(player.id !== socket.id);
-});
+
 
 
 

@@ -3,8 +3,8 @@ const socket = io.connect('http://localhost:3333');
 
 let players = [];
 
-socket.on("update", function(players){
-  updatePlayers(players);
+socket.on("update", function(playerss){
+  updatePlayers(playerss);
 });
 socket.on("disconnect", function(playerId){
   removePlayer(playerId);
@@ -12,12 +12,15 @@ socket.on("disconnect", function(playerId){
 
 
 function setup() {
-  frameRate(20);
+  //frameRate(20);
+  //socket.emit('requestUpdate');
   createCanvas(460, 460);
 }
 
 function draw() {
+  socket.emit('requestUpdate');
   background(0);
+  //console.log(players);
   for(let i = 0; i < players.length; i++){
     players[i].keyPressed();
     players[i].move();
@@ -25,6 +28,7 @@ function draw() {
     players[i].wall();
     players[i].makeSnake();
   }
+  socket.emit('updatePlayers', players);
 }
 
 function updatePlayers(serverPlayers) {
