@@ -55,7 +55,6 @@ class Snake {
 		var d = dist(this.x, this.y, snake.x, snake.y);
 		console.log(d);
 		if(d == 0){
-			console.log("tie game");
 			this.win = 3;
 	//		lose();
 		}
@@ -64,7 +63,6 @@ class Snake {
 			d = dist(this.x, this.y, this.tail[i].x, this.tail[i].y);
 			console.log(d);
 			if(d == 0){
-				console.log("PLAYER 1 WINS");
 				this.win = 1;
 			//	lose();
 			}
@@ -73,7 +71,6 @@ class Snake {
 			d = dist(this.x, this.y, snake.tail[i].x, snake.tail[i].y);
 			console.log(d);
 			if(d == 0){
-				console.log("PLAYER 2 WINS");
 				this.win = 2;
 			//	lose();
 			}
@@ -92,17 +89,17 @@ class Snake {
 	}
   wall(){
     if(this.x <= 0 - this.size)
-      this.x = 460 - this.size;
-	//		this.reset();
+      //this.x = 460 - this.size;
+			this.win = 2
 
     if(this.y <= 0 - this.size)
-      this.y = 460 - this.size;
-	//		this.reset();
+      //this.y = 460 - this.size;
+				this.win = 2
     if(this.x >= 460)
-      this.x = 0;
-	//		this.reset();
+    //  this.x = 0;
+				this.win = 2
     if(this.y >= 460)
-      this.y = 0;
-	//		this.reset();
+  //    this.y = 0;
+			this.win = 2
     }
 }
