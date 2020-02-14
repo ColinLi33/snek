@@ -52,29 +52,27 @@ class Snake {
 	}
 
 	collision(snake){
-		/*
-		for(let i = 1; i < snake.score; i++){
-			if(this.x + this.size > snake.tail[i].x && this.x < snake.tail[i].x + this.size && this.y < snake.tail[i].y + snake.size && this.y + this.size > snake.tail[i].y){
-				this.lose();
-			}
-		}*/
 		var d = dist(this.x, this.y, snake.x, snake.y);
-		if(d < 10){
+		console.log(d);
+		if(d == 0){
 			console.log("tie game");
 			this.win = 3;
 	//		lose();
 		}
-		for (var i = 1; i < this.score; i++) {
+		for(let i = this.score - 1; i > 0; i--){
+			console.log(this.score);
 			d = dist(this.x, this.y, this.tail[i].x, this.tail[i].y);
-			if(d < 10){
+			console.log(d);
+			if(d == 0){
 				console.log("PLAYER 1 WINS");
 				this.win = 1;
 			//	lose();
 			}
 		}
-		for (var i = 1; i < snake.score; i++) {
+		for(let i = snake.score - 1; i > 0; i--){
 			d = dist(this.x, this.y, snake.tail[i].x, snake.tail[i].y);
-			if(d < 10){
+			console.log(d);
+			if(d == 0){
 				console.log("PLAYER 2 WINS");
 				this.win = 2;
 			//	lose();

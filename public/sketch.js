@@ -41,31 +41,33 @@ if(currCanv == 1){
   fill(75);
   rect(0, 0, canvasWidth, canvasHeight);
   apple.show();
+
   snake.move();
   snake2.move();
   snake.wall();
   snake2.wall();
+  snake.trail();
+  snake2.trail();
+  snake.show();
+  snake2.show();
   snake.collision(snake2);
   snake2.collision(snake);
-  if(snake.win == 1){
+  if(snake.win == 1 || snake2.win == 2){
     setup();
     winString = "Player 1 Wins!\nPress space to play again."
     currCanv = 2;
-  } else if(snake.win == 2){
+  } else if(snake.win == 2 || snake2.win == 1){
     setup();
     winString = "Player 2 Wins!\nPress space to play again."
     currCanv = 2;
-  } else if(snake.win == 3){
+  } else if(snake.win == 3 || snake2.win == 3){
     setup();
     winString = "Tie Game!\nPress space to play again."
     currCanv = 2;
   }
-  snake.trail();
-  snake2.trail();
+
   snake.eat(apple);
   snake2.eat(apple);
-  snake.show();
-  snake2.show();
 //  background(255);
 
 } else if(currCanv == 2){
