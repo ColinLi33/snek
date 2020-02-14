@@ -63,7 +63,7 @@ class Snake {
 			d = dist(this.x, this.y, this.tail[i].x, this.tail[i].y);
 			console.log(d);
 			if(d == 0){
-				this.win = 1;
+				this.win = 2;
 			//	lose();
 			}
 		}
