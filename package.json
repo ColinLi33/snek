@@ -9,7 +9,7 @@
   "author": "Colin Li + Matthew Tzeng",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "heroku": "^7.33.3"
   }
 }
